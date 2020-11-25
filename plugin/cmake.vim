@@ -157,7 +157,8 @@ function! s:cmake(...)
     return
   endif
 
-  let &makeprg = 'cmake --build ' . shellescape(b:build_dir) . ' --target'
+  set errorformat+=%DEntering\ directory\ %f
+  let &makeprg = 'echo "Entering directory build" && cd build && cmake --build . --target'
   call s:cmake_configure()
 endfunction
 
